@@ -1,0 +1,18 @@
+SELECT * FROM pokemon;
+
+SELECT name  FROM pokemon WHERE Type_1 = 'Water' OR Total < 600;
+
+SELECT Type_1, SUM(HP) AS Total_HP FROM pokemon
+GROUP BY Type_1
+HAVING AVG(HP) > 4;
+
+SELECT Name, Attack,
+
+CASE 
+WHEN Attack < 50 THEN "weak"
+WHEN Attack < 70 THEN "OK"
+WHEN Attack < 100 THEN "Strong"
+ELSE "unbeatable"
+
+END AS "rank"
+FROM pokemon;
