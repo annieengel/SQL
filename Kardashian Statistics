@@ -1,17 +1,17 @@
-/* Create table about the people and what they do here */
-CREATE table "celebs" ('id' INTEGER PRIMARY KEY , 'name' text, 'industry' text);
 
-INSERT INTO celebs (id, name, industry) VALUES ("1", "Kim", "Modeling");
+CREATE table "celebs" ('id' INTEGER PRIMARY KEY , 'name' text, 'industry' text, 'followers' integer);
 
-INSERT INTO celebs (id, name, industry) VALUES (2, "Kourtney", "Marketing");
+INSERT INTO celebs (id, name, industry, followers) VALUES ("1", "Kim", "Modeling", 298);
 
-INSERT INTO celebs (id, name, industry) VALUES (3, "Khloe", "Modeling");
+INSERT INTO celebs (id, name, industry, followers) VALUES (2, "Kourtney", "Marketing", 168);
 
-INSERT INTO celebs (id, name, industry) VALUES (4, "Kylie", "Makeup");
+INSERT INTO celebs (id, name, industry, followers) VALUES (3, "Khloe", "Modeling", 232);
 
-INSERT INTO celebs (id, name, industry) VALUES (5, "Kendall", "Supermodel");
+INSERT INTO celebs (id, name, industry, followers) VALUES (4, "Kylie", "Makeup", 325);
 
-INSERT INTO celebs (id, name, industry) VALUES (6, "Kris", "Boss");
+INSERT INTO celebs (id, name, industry, followers) VALUES (5, "Kendall", "Supermodel", 229);
+
+INSERT INTO celebs (id, name, industry, followers) VALUES (6, "Kris", "Boss", 46.7);
 
 
 
@@ -24,4 +24,8 @@ INSERT INTO bf (id, name, gf_id) VALUES (3, "Travis B", 2);
 
 SELECT celebs.name, bf.name FROM celebs
 LEFT OUTER JOIN bf 
+ON celebs.id=bf.gf_id;
+
+SELECT celebs.name, bf.name FROM celebs
+INNER JOIN bf 
 ON celebs.id=bf.gf_id;
