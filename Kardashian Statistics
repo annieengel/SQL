@@ -1,0 +1,27 @@
+/* Create table about the people and what they do here */
+CREATE table "celebs" ('id' INTEGER PRIMARY KEY , 'name' text, 'industry' text);
+
+INSERT INTO celebs (id, name, industry) VALUES ("1", "Kim", "Modeling");
+
+INSERT INTO celebs (id, name, industry) VALUES (2, "Kourtney", "Marketing");
+
+INSERT INTO celebs (id, name, industry) VALUES (3, "Khloe", "Modeling");
+
+INSERT INTO celebs (id, name, industry) VALUES (4, "Kylie", "Makeup");
+
+INSERT INTO celebs (id, name, industry) VALUES (5, "Kendall", "Supermodel");
+
+INSERT INTO celebs (id, name, industry) VALUES (6, "Kris", "Boss");
+
+
+
+
+CREATE table "bf" ('id' INTEGER PRIMARY KEY , 'name' text, gf_id INTEGER);
+
+INSERT INTO bf (id, name, gf_id) VALUES (1, "Pete", 1);
+INSERT INTO bf (id, name, gf_id) VALUES (2, "Travis", 4);
+INSERT INTO bf (id, name, gf_id) VALUES (3, "Travis B", 2);
+
+SELECT celebs.name, bf.name FROM celebs
+LEFT OUTER JOIN bf 
+ON celebs.id=bf.gf_id;
