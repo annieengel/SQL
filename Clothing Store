@@ -1,0 +1,23 @@
+CREATE TABLE store (ID integer primary key, item text, price integer, color text, season text);
+INSERT INTO 'store' VALUES (15,'sweater', 30, 'red', 'winter');
+INSERT INTO 'store' VALUES(1,'sweater', 30, 'red', 'winter');
+INSERT INTO 'store' VALUES(2,'pants', 10, 'pink', 'winter');
+INSERT INTO 'store' VALUES(4,'sweater', 30, 'red', 'winter');
+INSERT INTO 'store' VALUES(5,'robe', 16, 'grey', 'summer');
+INSERT INTO 'store' VALUES(6,'shoes', 100, 'black', 'winter');
+INSERT INTO 'store' VALUES(7,'dress', 30, 'purple', 'spring');
+INSERT INTO 'store' VALUES(8,'sweater', 15, 'red', 'winter');
+INSERT INTO 'store' VALUES(9,'sweater', 18, 'red', 'winter');
+INSERT INTO 'store' VALUES(10,'sweater', 47, 'red', 'winter');
+INSERT INTO 'store' VALUES(12,'sweater', 24, 'red', 'winter');
+INSERT INTO 'store' VALUES(13,'sweater', 114, 'red', 'winter');
+INSERT INTO 'store' VALUES(14,'sweater', 76, 'red', 'winter');
+
+SELECT * FROM store;
+
+SELECT season, AVG(price) FROM store 
+GROUP BY season 
+ORDER BY price;
+
+SELECT * FROM store
+ORDER BY price;
