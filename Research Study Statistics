@@ -1,0 +1,68 @@
+**Data was exported from REDCap**
+
+CREATE TABLE BIT_DB.neonate (
+id integer PRIMARY KEY,
+Record_ID VARCHAR NOT NULL,
+redcap_event_name VARCHAR NOT NULL,
+maternal_medical_background_complete INTEGER)
+
+CREATE TABLE BIT_DB.sixmonth (
+id integer PRIMARY KEY,
+Record_ID VARCHAR NOT NULL,
+redcap_event_name varchar NOT NULL,
+maternal_medical_background_complete integer NOT NULL)
+
+CREATE TABLE BIT_DB.twelvemonth (
+id integer PRIMARY KEY,
+Record_ID VARCHAR NOT NULL,
+redcap_event_name VARCHAR NOT NULL,
+maternal_medical_background_complete INTEGER NOT NULL)
+
+CREATE TABLE BIT_DB.Enrolled (
+id integer PRIMARY KEY,
+Record_id VARCHAR NOT NULL,
+survey_email VARCHAR,
+Future_research INTEGER,
+ra_enter_dob VARCHAR NOT NULL,
+redcap_event_name TEXT NOT NULL,
+ra_calc_infant_age INTEGER NOT NULL)
+
+
+
+*Quantify amount of participants who completed the neonatal timepoint survey
+
+SELECT COUNT(Record_ID)
+FROM BIT_DB.neonate
+WHERE maternal_medical_background_complete = 2
+
+
+*Quantify amount of participants who completed the six month timepoint survey
+
+SELECT COUNT(Record_ID)
+FROM BIT_DB.sixmonth
+WHERE maternal_medical_background_complete = 2
+
+
+*Quantify amount of participants who completed the tweleve month timepoint survey
+
+SELECT COUNT(Record_ID)
+FROM BIT_DB.twelvemonth
+WHERE maternal_medical_background_complete = 2
+
+*Select participants whose infant's age will be at least 6 months at the end of April
+
+SELECT Record_id, ra_calc_infant_age, ra_enter_dob
+FROM BIT_DB.Enrolled
+WHERE ra_enter_dob >= "10-31-2021"
+
+*What is the average infant age
+SELECT Record_id, (AVG)ra_calc_infant_age
+FROM FROM BIT_DB.Enrolled
+GROUP BY redcap_event_name
+
+
+*Select the emails of participants who consented to future research
+
+SELECT survey_email
+FROM FROM BIT_DB.Enrolled
+WHERE Future_research = 1
