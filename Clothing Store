@@ -22,10 +22,15 @@ ORDER BY price;
 SELECT * FROM store
 ORDER BY price;
 
-SELECT season, price FROM store GROUP BY season ORDER BY price;
+SELECT season, price 
+FROM store 
+GROUP BY season 
+ORDER BY price;
 
-SELECT item, count(item), season FROM store
+SELECT item, count(item), season 
+FROM store
 GROUP BY season;
 
-SELECT item, count(color), color FROM store
+SELECT item, count(color), color
+FROM store
 GROUP BY color;
