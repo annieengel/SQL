@@ -30,4 +30,51 @@ HireDate DATETIME,
 Address NVARCHAR)
 END
 
+/*exploring the customers table*/
+SELECT * FROM chinook.customers
+Limit 10;
 
+
+/*exploring the employees table*/
+SELECT * FROM chinook.employees
+Limit 10;
+
+/* joining all columns from tables customers and employees*/ 
+SELECT * FROM chinook.customers c
+LEFT JOIN chinook.employees e
+ON e.employeeid = c.customerid;
+
+
+/*joining customers and employees tables to obtain first and last names of an employee and which company and city the customer they helped was from*/
+SELECT e.Title
+,e.FirstName
+,e.lastname
+,c.Company
+,c.City FROM chinook.customers c
+LEFT JOIN chinook.employees e
+ON e.employeeid = c.customerid;
+
+/*Obtaining longest and shortest employee title. If two of same length deciding by alphaetical order*/
+SELECT Title,LENGTH(Title) FROM chinook.employees
+ORDER BY LENGTH(Title), Title ASC
+Limit 1;
+
+SELECT Title,LENGTH(Title) FROM chinook.employees
+ORDER BY Title, LENGTH(Title) DESC
+LIMIT 1;
+
+/* selecting city names with vowels, no repeats*/
+SELECT DISTINCT  City FROM chinook.customers 
+WHERE CITY LIKE '%a%'
+AND  CITY LIKE '%e%' 
+AND CITY LIKE '%i%' 
+AND CITY LIKE '%o%'
+AND CITY LIKE '%u%';
+
+/* selecting city names starting with vowels, no repeats*/
+SELECT DISTINCT CITY FROM chinook.customers
+WHERE LEFT(City,1) in ('A','E','I','O','U')
+
+/* selecting city names ending with vowels, no repeats*/
+SELECT DISTINCT CITY FROM chinook.customers
+WHERE CITY REGEXP '^[aeiou].*[aeiou]$'
