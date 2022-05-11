@@ -1,0 +1,26 @@
+CREATE TABLE customers
+CustomerId INTEGER
+FirstName NVARCHAR
+LastName NVARCHAR
+Company NVARCHAR
+Address NVARCHAR
+City NVARCHAR
+State NVARCHAR
+Country NVARCHAR
+PostalCode NVARCHAR
+Phone NVARCHAR
+Fax NVARCHAR
+Email NVARCHAR
+SupportRepId NVARCHAR
+END
+
+CREATE TABLE employees
+EmployeeId INTEGER
+LastName NVARCHAR
+FirstName NVARCHAR
+Title NVARCHAR
+ReportsTo INTEGER
+BirthDate DATETIME
+HireDate DATETIME
+Address NVARCHAR
+END
