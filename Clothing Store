@@ -13,24 +13,26 @@ INSERT INTO 'store' VALUES(12,'sweater', 24, 'red', 'winter');
 INSERT INTO 'store' VALUES(13,'sweater', 114, 'red', 'winter');
 INSERT INTO 'store' VALUES(14,'sweater', 76, 'red', 'winter');
 
+*/viewing data*/
 SELECT * FROM store;
 
-SELECT season, AVG(price) FROM store 
-GROUP BY season 
-ORDER BY price;
 
+/*ordering items by price*/
 SELECT * FROM store
-ORDER BY price;
+ORDER BY price ASC;
 
-SELECT season, price 
+*/Selecting items and grouping by season and ordering by descending price*/
+SELECT *
 FROM store 
 GROUP BY season 
-ORDER BY price;
+ORDER BY price DESC;
 
+/* couting amount of item per season category*/
 SELECT item, count(item), season 
 FROM store
 GROUP BY season;
 
+/*counting amount of items of one color*/
 SELECT item, count(color), color
 FROM store
 GROUP BY color;
