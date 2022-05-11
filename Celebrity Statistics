@@ -16,16 +16,26 @@ INSERT INTO celebs (id, name, industry, followers) VALUES (6, "Kris", "Boss", 46
 
 
 
-CREATE table "bf" ('id' INTEGER PRIMARY KEY , 'name' text, gf_id INTEGER);
+CREATE table "Partner" ('id' INTEGER PRIMARY KEY , 'name' text, gf_id INTEGER);
 
-INSERT INTO bf (id, name, gf_id) VALUES (1, "Pete", 1);
-INSERT INTO bf (id, name, gf_id) VALUES (2, "Travis", 4);
+INSERT INTO Partner (id, name, gf_id) VALUES (1, "Pete", 1);
+INSERT INTO Partner (id, name, gf_id) VALUES (2, "Travis", 4);
 INSERT INTO bf (id, name, gf_id) VALUES (3, "Travis B", 2);
 
+*/connecting celebs with their partners including nulls*/
 SELECT celebs.name, bf.name FROM celebs
 LEFT OUTER JOIN bf 
 ON celebs.id=bf.gf_id;
 
+*/connecting celebs with their partners not including nulls*/
 SELECT celebs.name, bf.name FROM celebs
 INNER JOIN bf 
 ON celebs.id=bf.gf_id;
+
+*/Rank celebs by social media followers*/
+SELECT * FROM CELEBS
+ORDER BY followers DESC
+
+*/Order celebs by name followers*/
+SELECT * FROM CELEBS 
+ORDER BY name ASC
