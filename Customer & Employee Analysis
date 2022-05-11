@@ -1,26 +1,33 @@
-CREATE TABLE customers
-CustomerId INTEGER
-FirstName NVARCHAR
-LastName NVARCHAR
-Company NVARCHAR
-Address NVARCHAR
-City NVARCHAR
-State NVARCHAR
-Country NVARCHAR
-PostalCode NVARCHAR
-Phone NVARCHAR
-Fax NVARCHAR
-Email NVARCHAR
-SupportRepId NVARCHAR
+* For this project, I downloaded a database from BreakIntoTech
+* Then I created a table to insert customer and employee data into.
+* Finally, I performed analytics on the data using SQL. 
+
+
+CREATE TABLE CHINOOK.customers (
+CustomerId PRIMARY INTEGER KEY,
+FirstName VARCHAR,
+LastName VARCHAR,
+Company VARCHAR,
+Address VARCHAR,
+City VARCHAR,
+State VARCHAR,
+Country VARCHAR,
+PostalCode VARCHAR,
+Phone VARCHAR,
+Fax VARCHAR,
+Email VARCHAR,
+SupportRepId VARCHAR)
 END
 
-CREATE TABLE employees
-EmployeeId INTEGER
-LastName NVARCHAR
-FirstName NVARCHAR
-Title NVARCHAR
-ReportsTo INTEGER
-BirthDate DATETIME
-HireDate DATETIME
-Address NVARCHAR
+CREATE TABLE CHINOOK.employees (
+EmployeeId INTEGER,
+LastName VARCHAR,
+FirstName NVARCHAR,
+Title NVARCHAR,
+ReportsTo INTEGER,
+BirthDate DATETIME,
+HireDate DATETIME,
+Address NVARCHAR)
 END
+
+
