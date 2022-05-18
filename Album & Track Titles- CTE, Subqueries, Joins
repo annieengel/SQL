@@ -1,0 +1,46 @@
+Data imported from a dataset called chinook, which represents a digital media store and includes tables for artists, albums, media tracks, invoices, and customers.
+CREATE TABLE ( AlbumId PRIMARY INTEGER KEY,
+Title VARCHAR,
+ARTISTID INTEGER)
+
+CREATE TABLE tracks (TRACKId PRIMARY INTEGER KEY,
+Name VARCHAR,
+AlbumId INTEGER,
+MediaTypeId INTEGER,
+GenreId INTEGER,
+Composer VARCHAR,
+Milliseconds INTEGER,
+Bytes INTEGER,
+UnitPrice NUMERIC)
+
+
+
+/*viewing data*/ 
+SELECT * FROM chinook.tracks
+
+/*creating average milliseconds for subquery*/ 
+SELECT AVG(milliseconds) FROM chinook.tracks
+
+/*subquery to find name and album id of songs with milliseconds greater than the average*/ 
+SELECT name, albumid, milliseconds FROM chinook.tracks
+WHERE milliseconds> (SELECT AVG(milliseconds) FROM chinook.tracks) 
+ORDER BY milliseconds DESC
+
+
+/* created a CTE of track ID, name, mediatypeId where media type=2. Selected names from the CTE*/
+WITH tempTable AS (
+SELECT
+TrackId, Name, MediaTypeId
+FROM tracks
+WHERE MediaTypeId = '2')
+
+SELECT name FROM tempTable
+
+/*adding album titles to track names & composers*/
+SELECT t.Name AS Song_Title,
+a.Title AS Album_Title,
+t.Composer
+FROM chinook.tracks t
+INNER JOIN chinook.albums a
+ON t.AlbumId = a.AlbumId
+ORDER BY Album_Title ASC
