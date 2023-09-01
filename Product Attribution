@@ -1,0 +1,224 @@
+In this project I created SQL code to create data pulls of attributes/ product tags like size charts, sports and activity, and fit types. This is to pull greater chunks of style codes to attribute and tag more products 
+at once for faster work processes. 
+
+
+
+Select * FROM BIT_DB.MX4
+
+
+CREATE TABLE BIT_DB.MX6 (
+Product int,
+Age varchar,
+Gender varchar,
+Sihlo varchar,
+Sizesc varchar,
+Color varchar,
+Fit varchar,
+Merchclass varchar,
+Sum varchar,
+Tech varchar,
+sizerange varchar,
+Primaryc varchar,
+Artemis varchar
+);
+
+/*renaming sihloettes into top or bottom*/
+
+SELECT *,
+CASE WHEN Merchclass = "PANTS" THEN'Bottom'
+WHEN Merchclass = "BAGS" THEN 'Bag'
+WHEN Merchclass = "BALLS" THEN 'Ball'
+WHEN Merchclass = "BASELAYER BOTTOMS" THEN 'Bottom'
+WHEN Merchclass = "BRAS" THEN 'Bra'
+WHEN Merchclass = "DRESSES" THEN 'Top'
+WHEN Merchclass = "FLEECE BOTTOMS" THEN 'Bottom'
+WHEN Merchclass = "FLEECE TOPS" THEN 'Top'
+WHEN Merchclass = "GLOVES" THEN 'Glove'
+WHEN Merchclass = "GRAPHIC TEES" THEN 'Top'
+WHEN Merchclass = "HEADWEAR" THEN 'Hat'
+WHEN Merchclass = "JACKETS" THEN 'Top'
+WHEN Merchclass = "LIFESTYLE TOPS" THEN 'Top'
+WHEN Merchclass = "MIDLAYER TOPS" THEN 'Top'
+WHEN Merchclass = "OTHER" THEN 'Other'
+WHEN Merchclass = "OUTERWEAR" THEN 'Top'
+WHEN Merchclass = "PANTS" THEN 'Bottom'
+WHEN Merchclass = "PERFORMANCE TOPS" THEN 'Top'
+WHEN Merchclass = "POLOS" THEN 'Top'
+WHEN Merchclass = "PROTECTIVE" THEN 'Shinguard'
+WHEN Merchclass = "REPLICA JERSEYS" THEN 'Top'
+WHEN Merchclass = "SHORTS" THEN 'Bottom'
+WHEN Merchclass = "SKIRTS" THEN 'Bottom'
+WHEN Merchclass = "SOCKS" THEN 'Socks'
+WHEN Merchclass = "TIGHTS" THEN 'Bottom'
+WHEN Merchclass = "TRACK SUITS" THEN 'Top'
+WHEN Merchclass = "UNDERWEAR" THEN 'Underwear'
+Else 'Shoes'
+END Artemis
+FROM BIT_DB.MX2
+ORDER BY Artemis
+
+
+/*testing the table I built*/
+Select * FROM BIT_DB.MX6
+WHERE artemis = "Top"
+
+
+
+/*Adult Western style Mens Bottoms grouped by numeric or alpha*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Artemis = "Bottom"
+AND Age = "ADULT"
+AND NOT Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Sizerange
+
+
+
+/*missing sports and activities from pull above. Running this to sort by activity to tag and GAGL*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis, Sum
+From BIT_DB.MX6
+WHERE Artemis = "Bottom"
+AND Age = "ADULT"
+AND NOT Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Sum
+
+
+
+
+
+/*Adult Asian style Mens Bottoms grouped by numeric or alpha*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Artemis = "Bottom"
+AND Fit = "ASIA FIT"
+AND Age="ADULT"
+AND NOT Gender = "FEMALE"
+ORDER BY Sizerange
+
+
+
+/*Adult Western style Mens tops grouped by numeric or alpha*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Artemis = "Top"
+AND Age = "ADULT"
+AND NOT Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Sizerange
+
+
+
+/*missing sports and activities from pull above. Running this to sort by activity to tag and GAGL*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis, Sum
+
+From BIT_DB.MX6
+WHERE Artemis = "Top"
+AND Age = "ADULT"
+AND NOT Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Sum
+
+
+
+/*Adult Asian style Mens tops grouped by numeric or alpha*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+
+From BIT_DB.MX6
+WHERE Artemis = "Top"
+AND Age = "ADULT"
+AND NOT Gender = "FEMALE"
+AND NOT Fit = "WESTERN FIT"
+ORDER BY Gender
+
+
+
+/*Adult Western style womens bottoms grouped by fit*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+
+From BIT_DB.MX6
+WHERE Artemis = "Bottom"
+AND Age = "ADULT"
+AND Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Fit
+
+
+
+/*Missing sports tag from above*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis, Sum
+From BIT_DB.MX6
+WHERE Artemis = "Bottom"
+AND Age = "ADULT"
+AND Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Sum
+
+
+
+/*Adult Asia style womens bottoms grouped by fit*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Artemis = "Bottom"
+AND Age = "ADULT"
+AND Gender = "FEMALE"
+AND Fit = "ASIA FIT"
+
+
+
+/*Adult Western style womens tops grouped by fit*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Artemis = "Top"
+AND Age = "ADULT"
+AND Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Fit
+
+
+
+/*western tops women for sport and activity tag*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis, Sum
+From BIT_DB.MX6
+WHERE Artemis = "Top"
+AND Age = "ADULT"
+AND Gender = "FEMALE"
+AND NOT Fit = "ASIA FIT"
+ORDER BY Sum
+
+
+
+/*Adult Asia style womens tops grouped by fit*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Artemis = "Top"
+AND Age = "ADULT"
+AND Gender = "FEMALE"
+AND Fit = "ASIA FIT"
+ORDER BY Fit
+
+
+
+/*Youth & grade school tops*/
+
+SELECT Product, Age, Gender, Fit,Sizerange, Artemis
+From BIT_DB.MX6
+WHERE Age = "YOUTH"
+OR Age = "GRADE SCHOOL"
+AND Artemis = "Top"
+AND Gender = "FEMALE"
+AND Fit = "ASIA FIT"
+ORDER BY Fit
